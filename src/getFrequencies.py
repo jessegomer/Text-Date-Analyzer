@@ -17,7 +17,7 @@ class Corpus(object):
 #the shelf is a way to cache the ngram results so that the api does not need to be
 #called for everything
 def load_shelf(n, corpus):
-    return shelve.open("caches/cache_corpus_{}_n_{}".format(corpus, n))
+    return shelve.open("../caches/cache_corpus_{}_n_{}".format(corpus, n))
 
 
 def process_raw_data(ngrams, raw_data):
@@ -35,7 +35,7 @@ def process_raw_data(ngrams, raw_data):
 
 
 def make_totals(corpus):
-    raw_counts = file("metadata/{}_counts.txt".format(corpus)).read()
+    raw_counts = file("../metadata/{}_counts.txt".format(corpus)).read()
     totals = []
     for year_count in raw_counts.split("\t"):
         items = year_count.split(",")

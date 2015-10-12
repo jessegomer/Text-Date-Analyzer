@@ -3,6 +3,7 @@ import numpy as np
 from scraper import Corpus, NgramScraper
 
 
+
 class Learner(object):
     def __init__(self, start_year=1800, end_year=1999, bucket_length=10, psuedocount=1):
         self.start_year = start_year
@@ -42,7 +43,7 @@ class Learner(object):
 
 
 
-text = file("data/austen/complete.txt").read()
+text = file("../text/austen/complete.txt").read()
 learner = Learner(bucket_length=10)
 print learner.predict_year(text, 2, 1000)
 

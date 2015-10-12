@@ -20,7 +20,7 @@ class NgramScraper(object):
         self.call_limit = call_limit
 
     def load_shelf(self):
-        return shelve.open("caches/cache_corpus_{}_n_{}".format(self.corpus, self.n))
+        return shelve.open("../caches/cache_corpus_{}_n_{}".format(self.corpus, self.n))
 
     def process_raw_data(self, ngrams, raw_data):
         data = []
@@ -36,7 +36,7 @@ class NgramScraper(object):
         return data
 
     def make_totals(self):
-        raw_counts = file("metadata/{}_counts.txt".format(self.corpus)).read()
+        raw_counts = file("../metadata/{}_counts.txt".format(self.corpus)).read()
         totals = []
         for year_count in raw_counts.split("\t"):
             items = year_count.split(",")
