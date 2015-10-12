@@ -1,0 +1,8 @@
+
+.idea/.name
+
+*.xml
+
+.idea/text_dating.iml
+
+caches/*
