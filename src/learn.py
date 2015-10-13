@@ -42,8 +42,3 @@ class Learner(object):
         return [b for a,b in sorted(zip(final_prob, years), key=lambda x:x[0], reverse=True)]
 
 
-
-text = file("../text/austen/complete.txt").read()
-learner = Learner(bucket_length=10)
-print learner.predict_year(text, 2, 1000)
-
