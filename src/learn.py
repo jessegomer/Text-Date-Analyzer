@@ -5,6 +5,13 @@ from scraper import Corpus, NgramScraper
 
 
 class Learner(object):
+
+    #arguments:
+    #   start_year - the first year to get ngram data from, note that the earlier it is, the less data
+    #   end_year - the last year to get ngram data from, inclusive note that the latest year possible is corpus dependant
+    #   bucket_length - how large is bucket is
+    #   psuedocount  - the value added to the yearly totals, should not be 0 or else some years
+    #                   will not be considered due to 0 occurances in the corpus in that year
     def __init__(self, start_year=1800, end_year=1999, bucket_length=10, psuedocount=1):
         self.start_year = start_year
         self.end_year = end_year
@@ -25,6 +32,12 @@ class Learner(object):
                                     for start in start_years - self.start_year])
         return buckets
 
+
+    #parameters:
+    #   text - the text to be analyzed
+    #   n - how many words make up 1 ngram, note that the maximum value depends on the corpus
+    #   amount - how many ngrams go into the date calculation, note this exists because calling the api
+    #           is slow so lower values mean less ngrams to lookup
     def predict_year(self, text, n, amount, corpus=Corpus.english):
         ns = NgramScraper(n, corpus)
         counts = make_ngram_counts(make_ngrams(text, n))
